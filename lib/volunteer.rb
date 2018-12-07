@@ -12,4 +12,8 @@ class Volunteer
       @hours = 0
     end
   end
+
+  def ==(other_instance)
+    @name == other_instance.name
+  end
 end
