@@ -36,4 +36,8 @@ class Project
     returned_project = DB.exec("SELECT * FROM projects WHERE id = #{id}")
     Project.all_basic(returned_project)[0]
   end
+
+  def volunteers
+    Volunteer.all_by_project(@id)
+  end
 end

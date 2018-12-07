@@ -43,4 +43,9 @@ class Volunteer
     returned_volunteer = DB.exec("SELECT * FROM volunteers WHERE id = #{id}")
     Volunteer.all_basic(returned_volunteer)[0]
   end
+
+  def self.all_by_project(project_id)
+    returned_volunteers = DB.exec("SELECT * FROM volunteers WHERE project_id = #{project_id}")
+    Volunteer.all_basic(returned_volunteers)
+  end
 end
