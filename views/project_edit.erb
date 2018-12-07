@@ -3,7 +3,7 @@
 <form action="/projects/<%= @project.id %>/edit" method="post">
   <input type="hidden" name="_method" value="patch">
   <label for="submit">New project name:</label>
-  <input type="text" name="title"><br>
+  <input type="text" name="title" required="true"><br>
   <button type="submit" name="button">Update Project</button>
 </form>
 

@@ -2,13 +2,30 @@
 
 <form action="/projects" method="post">
   <label for="title">Name of the project: </label>
-  <input type="text" name="title" placeholder="Name of project"><br>
+  <input type="text" name="title" placeholder="Name of project" required="true"><br>
   <button type="submit" name="button">Create Project</button>
 </form>
 
+<h3>Add a new volunteer!</h3>
+
+<form action="/volunteers" method="post">
+  <label for="name">Name of volunteer</label>
+  <input type="text" name="name" required="true"><br>
+  <button type="submit" name="button">Add Volunteer</button>
+</form>
+
 <h3>Your projects:</h3>
+
 <ul>
 <% @projects.each do |project| %>
 <li><a href="projects/<%= project.id %>"><%= project.title %></a></li>
+<% end %>
+</ul>
+
+<h3>Unassigned volunteers:</h3>
+
+<ul>
+<% @unassigned_volunteers.each do |volunteer| %>
+<li><a href="volunteers/<%= volunteer.id %>"><%= volunteer.name %></a></li>
 <% end %>
 </ul>

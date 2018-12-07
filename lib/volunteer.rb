@@ -11,6 +11,9 @@ class Volunteer
     if(!@hours)
       @hours = 0
     end
+    if(!@project_id)
+      @project_id = 0
+    end
   end
 
   def ==(other_instance)
@@ -47,5 +50,20 @@ class Volunteer
   def self.all_by_project(project_id)
     returned_volunteers = DB.exec("SELECT * FROM volunteers WHERE project_id = #{project_id}")
     Volunteer.all_basic(returned_volunteers)
+  end
+
+  def self.all_by_unassigned
+    returned_volunteers = DB.exec("SELECT * FROM volunteers WHERE project_id = 0")
+    Volunteer.all_basic(returned_volunteers)
+  end
+
+  def add_project(project_id)
+    @project_id = project_id
+    DB.exec("UPDATE volunteers SET project_id = '#{@project_id}' WHERE id = #{@id}")
+  end
+
+  def change_name(name)
+    @name = name
+    DB.exec("UPDATE volunteers SET name = '#{@name}' WHERE id = #{@id}")
   end
 end
