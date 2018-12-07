@@ -1,0 +1,14 @@
+<h3>Start a new project!</h3>
+
+<form action="/project" method="post">
+  <label for="title"></label>
+  <input type="text" name="title" placeholder="Name of project">
+  <button type="submit" name="button">Create Project</button>
+</form>
+
+<h3>Your projects:</h3>
+<ul>
+<% @projects.each do |project| %>
+<li><a href="project/<%= project.id %>"><%= project.title %></a></li>
+<% end %>
+</ul>
