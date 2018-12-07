@@ -31,4 +31,9 @@ class Project
   def ==(other_instance)
     @title == other_instance.title
   end
+
+  def self.find(id)
+    returned_project = DB.exec("SELECT * FROM projects WHERE id = #{id}")
+    Project.all_basic(returned_project)[0]
+  end
 end
