@@ -40,4 +40,9 @@ class Project
   def volunteers
     Volunteer.all_by_project(@id)
   end
+
+  def update(attributes)
+    @title = attributes[:title]
+    DB.exec("UPDATE projects SET name = '#{@title}' WHERE id = #{@id}")
+  end
 end
