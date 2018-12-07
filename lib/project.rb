@@ -48,6 +48,10 @@ class Project
 
   def delete
     DB.exec("DELETE FROM projects WHERE id = #{@id}")
+    remove_volunteers = self.volunteers
+    remove_volunteers.each do |volunteer|
+      volunteer.add_project(0)
+    end
   end
 
   def get_hours
