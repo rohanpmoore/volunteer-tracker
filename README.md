@@ -1,6 +1,6 @@
 # _Volunteer Tracker_
 
-#### _Sinatran and SQL Project for Ruby, 12.07.2018_
+#### _Sinatra and SQL Project for Ruby, 12.07.2018_
 
 #### By **_Rohan Moore_**
 
