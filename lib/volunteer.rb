@@ -66,4 +66,24 @@ class Volunteer
     @name = name
     DB.exec("UPDATE volunteers SET name = '#{@name}' WHERE id = #{@id}")
   end
+
+  def add_hours(hours)
+    @hours += hours
+    DB.exec("UPDATE volunteers SET hours = '#{@hours}' WHERE id = #{@id}")
+  end
+
+  def self.all_by_hours(project_id)
+    returned_volunteers = DB.exec("SELECT * FROM volunteers WHERE project_id = #{project_id} ORDER BY hours")
+    Volunteer.all_basic(returned_volunteers)
+  end
+
+  def self.all_by_hours_inverse(project_id)
+    returned_volunteers = DB.exec("SELECT * FROM volunteers WHERE project_id = #{project_id} ORDER BY hours DESC")
+    Volunteer.all_basic(returned_volunteers)
+  end
+
+  def self.all_by_name(project_id)
+    returned_volunteers = DB.exec("SELECT * FROM volunteers WHERE project_id = #{project_id} ORDER BY name")
+    Volunteer.all_basic(returned_volunteers)
+  end
 end

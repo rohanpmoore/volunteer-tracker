@@ -30,6 +30,24 @@ get('/volunteers/:id') do
   erb :volunteer
 end
 
+get('/projects/:id/by_hours') do
+  @project = Project.find(params[:id].to_i)
+  @volunteers = Volunteer.all_by_hours_inverse(@project.id)
+  erb :project
+end
+
+get('/projects/:id/by_hours_desc') do
+  @project = Project.find(params[:id].to_i)
+  @volunteers = Volunteer.all_by_hours(@project.id)
+  erb :project
+end
+
+get('/projects/:id/by_name') do
+  @project = Project.find(params[:id].to_i)
+  @volunteers = Volunteer.all_by_name(@project.id)
+  erb :project
+end
+
 post('/projects') do
   title = params["title"]
   project = Project.new({:title => title})
@@ -64,6 +82,14 @@ patch('/volunteers/:id/update') do
   name = params[:name]
   volunteer.change_name(name)
   redirect "/volunteers/#{id}"
+end
+
+patch('/volunteers/:id/add_hours') do
+  id = params[:id].to_i
+  volunteer = Volunteer.find(id)
+  hours = params[:hours].to_i
+  volunteer.add_hours(hours)
+  redirect "/projects/#{volunteer.project_id}"
 end
 
 delete('/projects/:id/edit') do

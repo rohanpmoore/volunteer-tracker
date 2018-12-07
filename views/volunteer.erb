@@ -1,5 +1,13 @@
 <h3>Volunteer Name: <%= @volunteer.name %></h3>
 
+<h4>Update Volunteer:</h4>
+<form action="/volunteers/<%= @volunteer.id %>/update" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label for="name">Change volunteer's name:</label>
+  <input type="text" name="name">
+  <button type="submit" name="button">Update Volunteer</button>
+</form>
+
 <% if(@volunteer.project_id == 0) %>
 <h4>Add to project:</h4>
 <form action="/volunteers/<%= @volunteer.id %>/add_project" method="post">
@@ -11,11 +19,13 @@
   </select>
   <button type="submit" name="button">Add Project</button>
 </form>
-<% end %>
 
-<form action="/volunteers/<%= @volunteer.id %>/update" method="post">
+<% else %>
+<h4>Add hours worked:</h4>
+<form action="/volunteers/<%= @volunteer.id %>/add_hours" method="post">
   <input type="hidden" name="_method" value="patch">
-  <label for="name">Change volunteer's name:</label>
-  <input type="text" name="name">
-  <button type="submit" name="button">Update Volunteer</button>
+  <label for="hours"></label>
+  <input type="number" name="hours" required="true">
+  <button type="submit" name="button">Add Hours</button>
 </form>
+<% end %>
