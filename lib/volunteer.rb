@@ -86,4 +86,8 @@ class Volunteer
     returned_volunteers = DB.exec("SELECT * FROM volunteers WHERE project_id = #{project_id} ORDER BY name")
     Volunteer.all_basic(returned_volunteers)
   end
+
+  def delete
+    DB.exec("DELETE FROM volunteers WHERE id = #{@id}")
+  end
 end

@@ -93,7 +93,13 @@ patch('/volunteers/:id/add_hours') do
 end
 
 delete('/projects/:id/edit') do
-  project = Project.find(params[:id])
+  project = Project.find(params[:id].to_i)
   project.delete
+  redirect '/'
+end
+
+delete('/volunteers/:id') do
+  voluteer = Volunteer.find(params[:id].to_i)
+  volunteer.delete
   redirect '/'
 end
