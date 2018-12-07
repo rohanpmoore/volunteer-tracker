@@ -12,26 +12,32 @@ get('/') do
   erb :index
 end
 
-post('/project') do
+post('/projects') do
   title = params["title"]
   project = Project.new({:title => title})
   project.save
   redirect '/'
 end
 
-get('/project/:id') do
+get('/projects/:id') do
   @project = Project.find(params[:id])
   erb :project
 end
 
-get('/project/:id/edit') do
+get('/projects/:id/edit') do
   @project = Project.find(params[:id])
   erb :project_edit
 end
 
-post('/project/:id/edit') do
+patch('/projects/:id/edit') do
   project = Project.find(params[:id])
   new_title = params[:title]
   project.update({:title => new_title})
-  redirect "/project/#{params[:id]}"
+  redirect "/projects/#{params[:id]}"
+end
+
+delete('/projects/:id/edit') do
+  project = Project.find(params[:id])
+  project.delete
+  redirect '/'
 end

@@ -1,6 +1,6 @@
 <h3>Start a new project!</h3>
 
-<form action="/project" method="post">
+<form action="/projects" method="post">
   <label for="title">Name of the project: </label>
   <input type="text" name="title" placeholder="Name of project"><br>
   <button type="submit" name="button">Create Project</button>
@@ -9,6 +9,6 @@
 <h3>Your projects:</h3>
 <ul>
 <% @projects.each do |project| %>
-<li><a href="project/<%= project.id %>"><%= project.title %></a></li>
+<li><a href="projects/<%= project.id %>"><%= project.title %></a></li>
 <% end %>
 </ul>
