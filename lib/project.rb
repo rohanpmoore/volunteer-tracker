@@ -16,7 +16,7 @@ class Project
   def self.all_basic(projects)
     output_projects = []
     projects.each do |project|
-      id = project["id"]
+      id = project["id"].to_i
       title = project["name"]
       output_projects.push(Project.new({:title => title, :id => id}))
     end
