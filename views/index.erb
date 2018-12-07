@@ -18,7 +18,7 @@
 
 <ul>
 <% @projects.each do |project| %>
-<li><a href="projects/<%= project.id %>"><%= project.title %></a></li>
+<li>Name: <a href="projects/<%= project.id %>"><%= project.title %></a>  Hours: <%= project.get_hours %></li>
 <% end %>
 </ul>
 
