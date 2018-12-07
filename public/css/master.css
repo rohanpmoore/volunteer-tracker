@@ -1,0 +1,22 @@
+body {
+  background-color: lightyellow;
+  background-image: url("/img/cloudy_sky.png");
+  background-size: cover;
+}
+
+form {
+  border: 1px solid black;
+  padding: 5px;
+  margin: 2px;
+  background-color: #efefef;
+}
+
+.container {
+  background-color: white;
+  padding: 10px;
+  border: 2px solid darkgrey;
+}
+
+.jumbotron h1 {
+  text-align: center;
+}

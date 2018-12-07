@@ -26,7 +26,7 @@ _If you discover a bug or want to make a suggestion or comment, send me an email
 
 ## Technologies Used
 
-_This project uses Ruby, HTML, Sinatra, and SQL._
+_This project uses Ruby, HTML, CSS, Sinatra, and PostgreSQL._
 
 ### License
 

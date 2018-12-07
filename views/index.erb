@@ -1,3 +1,8 @@
+<div id="intro">
+  <h2>What is Volunteer Tracker?</h2>
+  <p>Volunteer Tracker is a storage system to help you manage all your ongoing projects and volunteers.  With this program, you can manage your projects and what volunteers are assigned to them, as well as delete them when the project is complete.</p>
+</div>
+
 <h3>Start a new project!</h3>
 
 <form action="/projects" method="post">
@@ -10,10 +15,11 @@
 
 <form action="/volunteers" method="post">
   <label for="name">Name of volunteer</label>
-  <input type="text" name="name" required="true"><br>
+  <input type="text" name="name" required="true" placeholder="Name of volunteer"><br>
   <button type="submit" name="button">Add Volunteer</button>
 </form>
 
+<% if @projects.any? %>
 <h3>Your projects:</h3>
 
 <ul>
@@ -21,7 +27,9 @@
 <li>Name: <a href="projects/<%= project.id %>"><%= project.title %></a>  Hours: <%= project.get_hours %></li>
 <% end %>
 </ul>
+<% end %>
 
+<% if @unassigned_volunteers.any? %>
 <h3>Unassigned volunteers:</h3>
 
 <ul>
@@ -29,3 +37,4 @@
 <li><a href="volunteers/<%= volunteer.id %>"><%= volunteer.name %></a></li>
 <% end %>
 </ul>
+<% end %>
