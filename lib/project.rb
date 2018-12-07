@@ -49,4 +49,13 @@ class Project
   def delete
     DB.exec("DELETE FROM projects WHERE id = #{@id}")
   end
+
+  def get_hours
+    volunteer_list = self.volunteers
+    output = 0
+    volunteer_list.each do |volunteer|
+      output += volunteer.hours
+    end
+    output
+  end
 end

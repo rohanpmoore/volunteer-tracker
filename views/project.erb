@@ -15,4 +15,6 @@
 <p>There are no volunteers currently assigned to this project!</p>
 <% end %>
 
+<h5>Total hours worked: <%= @project.get_hours %></h5>
+
 <a href="/projects/<%= @project.id %>/edit">Edit Project</a>
